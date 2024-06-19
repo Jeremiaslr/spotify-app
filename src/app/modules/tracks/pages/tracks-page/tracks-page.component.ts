@@ -9,6 +9,7 @@ import { TrackModel } from '@core/models/tracks.model';
 })
 export class TracksPageComponent implements OnInit {
 
+  //can also use = tracks: TrackModel[] = []
   mockTracksList: Array<TrackModel> = [
    
   ]
