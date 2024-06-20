@@ -10,7 +10,7 @@ export class MediaPlayerComponent {
 
   mockCover: TrackModel = {
     cover: '',
-    albun: 'Gioli & Assia',
+    album: 'Gioli & Assia',
     name: 'BEBE (Oficial)',
     url: 'http://localhost/track.mp3',
     _id: 1,

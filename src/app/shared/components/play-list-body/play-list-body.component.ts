@@ -13,7 +13,8 @@ export class PlayListBodyComponent implements OnInit {
   track: Array<TrackModel> = [
 
   ]
-tracks: any;
+  optionSort: { property: string | null, order: string } = { property: null, order: 'asc' }
+  tracks: any;
 
   constructor() {}
 
@@ -21,6 +22,16 @@ tracks: any;
     const {data}: any = (dataRaw as any).default
     this.tracks = data
     
+  }
+
+  changeSort(property: string): void {
+    const { order } = this.optionSort
+    this.optionSort = {
+      property,
+      order: order === 'asc' ? 'desc' : 'asc'
+    }
+    console.log(this.optionSort);
+
   }
 
 }
