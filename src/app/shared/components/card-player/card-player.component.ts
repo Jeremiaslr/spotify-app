@@ -21,7 +21,6 @@ export class CardPlayerComponent implements OnInit {
 
   sendPlay(track: TrackModel) :void {
     // Sending track to player
-    console.log('sendig track to player', track)
     this.multimediaService.callback.emit(track)
   }
 }
