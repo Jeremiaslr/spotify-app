@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/app/environments/environment';
-import { map } from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
 
 
 @Injectable({
@@ -29,6 +29,10 @@ export class TrackService {
     .pipe(
       map(({ data }: any) => {
         return data.reverse()
+      }),
+      catchError((err) => {
+        const {status, statusText} = err
+        return of([])
       })
     )
   }
