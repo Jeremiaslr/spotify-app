@@ -10,20 +10,22 @@ import { Subscription } from 'rxjs';
 })
 export class TracksPageComponent implements OnInit, OnDestroy {
 
-  //can also use = tracks: TrackModel[] = []
   tracksTrending: Array<TrackModel> = []
   tracksRandom: Array<TrackModel> = []
 
   listObservers$: Array<Subscription> = []
 
-  constructor(
-    private trackService: TrackService
-  ) {}
+  constructor(private trackService: TrackService) {}
 
   ngOnInit(): void {
    this.trackService.getAllTracks$()
-   .subscribe(response => {
-    response
+   .subscribe((response: TrackModel[]) => {
+    this.tracksTrending = response
+   })
+
+   this.trackService.getAllRandom$()
+   .subscribe((response: TrackModel[]) => {
+    this.tracksRandom = response
    })
   }
 
