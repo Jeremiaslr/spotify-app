@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import * as dataRaw from '../../../../data/tracks.json'
 import { TrackModel } from '@core/models/tracks.model';
 import { TrackService } from '@modules/tracks/service/track.service';
 import { Subscription } from 'rxjs';
@@ -22,18 +21,14 @@ export class TracksPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-   const observer1$ = this.trackService.dataTracksTrending$
-    .subscribe(response => {
-      this.tracksTrending = response
-      console.log(response)
-    }
-   )
-
-   this.listObservers$ = [observer1$]
+   this.trackService.getAllTracks$()
+   .subscribe(response => {
+    response
+   })
   }
 
   ngOnDestroy(): void {
-    this.listObservers$.forEach(u => u.unsubscribe())
+    
   }
 
 }
